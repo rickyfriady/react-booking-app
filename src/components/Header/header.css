@@ -1,0 +1,89 @@
+.header {
+    background-color: #faeee7;
+    color: #33272a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0px 100px 0px;
+}
+
+.header-list {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.header-list-items {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 450;
+}
+
+.header-list-items.active {
+    border: 2px solid #33272a;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.header-title {
+    text-transform: capitalize;
+}
+
+.header-disc {
+    margin: 20px 0px;
+}
+
+.header-btn {
+    background-color: #ff8ba7;
+    font-weight: 500;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header-search {
+    height: 30px;
+    background-color: white;
+    border: 3px solid #c3f0ca;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.header-icon {
+    color: #ffc6c7;
+}
+
+.header-search-items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-search-Input {
+    border: none;
+    outline: none;
+}
+
+.header-search-text {
+    color: #33272a;
+    cursor: pointer;
+}
+
+.date-picker {
+    position: absolute;
+    top: 50px;
+    border: 2px solid #c3f0ca;
+}
