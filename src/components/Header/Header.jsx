@@ -2,6 +2,7 @@ import './header.css'
 import { IoBedOutline,IoAirplaneOutline, IoCarSportOutline, IoTrailSignSharp, IoCalendarNumberOutline } from "react-icons/io5";
 import { RiTaxiLine } from "react-icons/ri";
 import { MdFamilyRestroom } from "react-icons/md";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
@@ -10,7 +11,10 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import {useState} from 'react'
 
 
-const Header = () => {
+const Header = ({type}) => {
+
+  const [openDate, setOpenDate] = useState(false);
+  const [openOption, setOpenOption] = useState(false);
 
   const [date, setDate] = useState([
     {
@@ -20,9 +24,24 @@ const Header = () => {
     }
   ]);
 
+  const[option, setOption] = useState({
+    adult: 1,
+    children:0,
+    room:1,
+  })
+
+  const handleOption =  (name, operation) => {
+    setOption((prev)=>{
+      return{
+        ...prev,
+        [name]:operation === "i" ? option[name] + 1 : option[name] - 1,
+      }
+    })
+  }
+
   return (
     <div className='header'>
-      <div className="header-container">
+      <div className={type === "list" ? "header-container list-mode" : "header-container" }>
         <div className="header-list">
           <div className="header-list-items active">
             <IoBedOutline/>
@@ -45,6 +64,8 @@ const Header = () => {
             <span>Airport Taxi</span>
           </div>
         </div>
+        { type !== "list" &&
+          <>
         <h1 className="header-title">A Lifetime of discounts? It's Genius</h1>
         <p className="header-disc">
           Get rewarded for your travels - unlock instan savings of 10px or more with Alluky HotelBook Account
@@ -63,23 +84,57 @@ const Header = () => {
           </div>
           <div className="header-search-items">
             <IoCalendarNumberOutline className='header-icon'/>
-            <span className='header-search-text'>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
-            <DateRange
+            <span 
+            onClick={()=>setOpenDate(!openDate)} 
+            className='header-search-text'>
+              {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
+            </span>
+            {openDate && <DateRange
             editableDateInputs={true}
             onChange={item => setDate([item.selection])}
             moveRangeOnFirstSelection={false}
             ranges={date}
             className="date-picker"
-          />
+          />}
           </div>
           <div className="header-search-items">
           <MdFamilyRestroom className='header-icon'/>
-            <span className='header-search-text'>2 adult 2 children 1 room</span>
+            <span onClick={()=>setOpenOption(!openOption)} className='header-search-text'>{`${option.adult} Adult - ${option.children} Children - ${option.room} Room`}</span>
+            { openOption &&
+            <div className="options">
+              <div className="option-item">
+                <span className="option-text">Adult</span>
+                <div className="option-counter">
+                <button disabled={option.adult <= 1} className="option-counter-button" onClick={()=> handleOption("adult","d")}><FaMinus/></button>
+                <span className="option-counter-number">{option.adult}</span>
+                <button className="option-counter-button" onClick={()=> handleOption("adult","i")}><FaPlus/></button>
+                </div>
+              </div>
+              <div className="option-item">
+                <span className="option-text">Children</span>
+                <div className="option-counter">
+                <button disabled={option.children <= 0} className="option-counter-button" onClick={()=> handleOption("children","d")}><FaMinus/></button>
+                <span className="option-counter-number">{option.children}</span>
+                <button className="option-counter-button" onClick={()=> handleOption("children","i")}><FaPlus/></button>
+                </div>
+              </div>
+              <div className="option-item">
+                <span className="option-text">Room</span>
+                <div className="option-counter">
+                <button disabled={option.room <= 1} className="option-counter-button" onClick={()=> handleOption("room","d")}><FaMinus/></button>
+                <span className="option-counter-number">{option.room}</span>
+                <button className="option-counter-button" onClick={()=> handleOption("room","i")}><FaPlus/></button>
+                </div>
+              </div>
+            </div>
+            }
           </div>
           <div className="header-search-items">
           <button className="header-btn">Search</button>
           </div>
         </div>
+          </>
+        }
       </div>
     </div>
   )
