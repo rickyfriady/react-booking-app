@@ -44,9 +44,9 @@
 }
 
 .header-btn {
-    background-color: #abd1c6;
+    background-color: #fffffe;
     font-weight: 500;
-    border: none;
+    border-radius: 10px;
     padding: 10px;
     cursor: pointer;
 }
@@ -54,7 +54,6 @@
 .header-search {
     height: 30px;
     background-color: #abd1c6;
-    border: 3px solid #fffffe;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -64,16 +63,19 @@
     bottom: -25px;
     width: 100%;
     max-width: 1024px;
+    z-index: 2;
 }
 
 .header-icon {
     color: #fffffe;
+    width: 25px;
+    height: 25px;
 }
 
 .header-search-items {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .header-search-Input {
