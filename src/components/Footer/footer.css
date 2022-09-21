@@ -1,0 +1,17 @@
+.footer {
+    width: 100%;
+    max-width: 1024px;
+    font-style: 12px;
+}
+
+.footer-lists {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.footer-list {
+    list-style: none;
+    color: #004643;
+}
