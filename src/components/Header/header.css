@@ -44,7 +44,7 @@
 }
 
 .header-btn {
-    background-color: #fffffe;
+    background-color: #abd1c6;
     font-weight: 500;
     border-radius: 10px;
     padding: 10px;
@@ -53,7 +53,7 @@
 
 .header-search {
     height: 30px;
-    background-color: #abd1c6;
+    background-color: #fffffe;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -67,7 +67,7 @@
 }
 
 .header-icon {
-    color: #fffffe;
+    color: #004643;
     width: 25px;
     height: 25px;
 }
@@ -98,7 +98,7 @@
     position: absolute;
     top: 50px;
     background-color: #fffffe;
-    color: #abd1c6;
+    color: #004643;
     border: 2px solid #abd1c6;
 }
 
@@ -138,4 +138,5 @@
     text-align: center;
     padding-bottom: 3px;
     font-weight: 600;
+    font-size: 20px;
 }

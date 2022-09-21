@@ -7,11 +7,12 @@ body {
 }
 
 .home-container {
-    margin-top: 50px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    background-color: #abd1c6;
 }
 
 .home-title {
