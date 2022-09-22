@@ -9,12 +9,15 @@ import { format } from "date-fns";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = ({type}) => {
 
+  const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [openOption, setOpenOption] = useState(false);
+  const navigate = useNavigate()
 
   const [date, setDate] = useState([
     {
@@ -37,6 +40,10 @@ const Header = ({type}) => {
         [name]:operation === "i" ? option[name] + 1 : option[name] - 1,
       }
     })
+  }
+
+  const handleSearch = () => {
+    navigate("/hotels",{state: {destination,date,option}})
   }
 
   return (
@@ -80,7 +87,9 @@ const Header = ({type}) => {
             <input type="text" 
             name="search" 
             id="search"
-            placeholder='Where your going?' className='header-search-Input' />
+            placeholder='Where your going?'
+            className='header-search-Input' 
+            onChange={e => setDestination(e.target.value)}/>
           </div>
           <div className="header-search-items">
             <IoCalendarNumberOutline className='header-icon'/>
@@ -95,6 +104,7 @@ const Header = ({type}) => {
             moveRangeOnFirstSelection={false}
             ranges={date}
             className="date-picker"
+            minDate={new Date()}
           />}
           </div>
           <div className="header-search-items">
@@ -130,7 +140,7 @@ const Header = ({type}) => {
             }
           </div>
           <div className="header-search-items">
-          <button className="header-btn">Search</button>
+          <button className="header-btn" onClick={handleSearch}>Search</button>
           </div>
         </div>
           </>
