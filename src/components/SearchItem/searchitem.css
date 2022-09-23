@@ -1,0 +1,106 @@
+.search-item-content {
+    border: 1px solid gainsboro;
+    background-color: #e8e4e6;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.img-search {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.search-item-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+}
+
+.search-item-Title {
+    font-size: 20px;
+}
+
+.search-item-Distance {
+    font-size: 12px;
+}
+
+.search-item-TaxiOp {
+    font-size: 12px;
+    background-color: #0f3433;
+    color: #ffffee;
+    max-width: max-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-item-Subtitle {
+    font-size: 12px;
+    font-weight: bold;
+}
+.search-item-Features {
+    font-size: 12px;
+}
+
+.search-item-CancelOp {
+    font-size: 18px;
+    color: #0f3433;
+    font-weight: bold;
+}
+
+.search-item-CancelOpSubtitle {
+    font-size: 12px;
+    color: #0d834ed5;
+    font-weight: bold;
+}
+
+.search-item-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-item-Rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-item-Rating > span {
+    font-weight: 500;
+}
+
+.search-item-Rating > button {
+    background-color: #f9bc60;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.search-item-DetailTexts {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.search-item-Price {
+    font-size: 24px;
+}
+
+.search-item-TaxOp {
+    font-size: 12px;
+    color: #0f3433;
+}
+
+.search-item-CheckButton {
+    background-color: #0f3433;
+    color: #fffffe;
+    padding: 10px 5px;
+    font-weight: bold;
+    cursor: pointer;
+}

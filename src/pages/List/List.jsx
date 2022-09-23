@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import { useLocation } from 'react-router-dom';
 import { format } from "date-fns";
 import { DateRange } from 'react-date-range';
+import SearchItem from '../../components/SearchItem/SearchItem';
 
 const List = () => {
 
@@ -41,29 +42,39 @@ const List = () => {
             </div>
             <div className="search-item">
               <label htmlFor="">Options</label>
-              <div className="option-item">
+              <div className="option-warpper">
+              <div className="option-item-lists">
                 <span className='option-text'>Min Price <small>per night</small></span>
                 <input type="number" name="" id="" className='option-input' />
               </div>
-              <div className="option-item">
+              <div className="option-item-lists">
                 <span className='option-text'>Max Price <small>per night</small></span>
                 <input type="number" name="" id="" className='option-input' />
               </div>
-              <div className="option-item">
+              <div className="option-item-lists">
                 <span className='option-text'>Adult</span>
-                <input type="number" name="" id="" className='option-input' placeholder={location.state.option.adult} />
+                <input type="number" name="" id="" className='option-input' min={1} placeholder={location.state.option.adult} />
               </div>
-              <div className="option-item">
+              <div className="option-item-lists">
                 <span className='option-text'>Children</span>
-                <input type="number" name="" id="" className='option-input' />
+                <input type="number" name="" id="" className='option-input' min={0} placeholder={location.state.option.children} />
               </div>
-              <div className="option-item">
+              <div className="option-item-lists">
                 <span className='option-text'>Room</span>
-                <input type="number" name="" id="" className='option-input' />
+                <input type="number" name="" id="" className='option-input' min={1} placeholder={location.state.option.room} />
+              </div>
               </div>
             </div>
+            <button>Search</button>
           </div>
-          <div className="list-result"></div>
+          <div className="list-result">
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+            <SearchItem/>
+          </div>
         </div>
       </div>
     </div>
