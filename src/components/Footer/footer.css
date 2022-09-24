@@ -1,7 +1,9 @@
 .footer {
     width: 100%;
     max-width: 1024px;
+    padding: 0 auto;
     font-style: 12px;
+    background-color: #abd1c6;
 }
 
 .footer-lists {
