@@ -1,4 +1,6 @@
+import { useState } from "react";
 import {MdLocationOn} from "react-icons/md";
+import { RiArrowLeftCircleFill, RiArrowRightCircleFill, RiCloseCircleFill } from "react-icons/ri";
 
 import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
@@ -8,6 +10,28 @@ import Footer from "../../components/Footer/Footer";
 import './hotel.css'
 
 const Hotel = () => {
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = (i) => {
+    setSlideNumber(i)
+    setOpen(true)
+  }
+
+
+  const handleMove = (direction) => {
+    let newSliderNumber;
+    let TotalPhoto = hotelPhoto.length - 1;
+
+    if (direction === "l") {
+      newSliderNumber = slideNumber === 0 ? TotalPhoto : slideNumber - 1;
+    } else {
+      newSliderNumber = slideNumber === TotalPhoto ? 0 : slideNumber + 1;
+    }
+
+    setSlideNumber(newSliderNumber)
+  }
+
   const hotelPhoto  = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -33,6 +57,14 @@ const Hotel = () => {
       <Navbar/>
       <Header type="list"/>
       <div className="hotel-container">
+        {open && <div className="slider">
+          <RiCloseCircleFill className="close" onClick={()=>setOpen(false)}/>
+          <RiArrowLeftCircleFill className="arrow" onClick={()=>handleMove('l')}/>
+          <div className="slider-warpper">
+            <img src={hotelPhoto[slideNumber].src} alt="" className="slider-img" />
+          </div>
+          <RiArrowRightCircleFill className="arrow" onClick={()=>handleMove('r')}/>
+        </div>}
         <div className="hotel-warpper">
           <button className="btn-booknow">Reserve or Book now</button>
           <h1 className="hotel-title">Grand Hotel</h1>
@@ -47,9 +79,9 @@ const Hotel = () => {
             Book a stay over $114 at this property and get a free airport taxi
           </div>
           <div className="hotel-images-container">
-            {hotelPhoto.map((photo) => (
+            {hotelPhoto.map((photo, index) => (
               <div className="hotel-images-warpper">
-                <img src={photo.src} alt="" className="hotel-images" />
+                <img src={photo.src} onClick={() => handleOpen(index)} alt="" className="hotel-images" />
               </div>
             ))}
           </div>
